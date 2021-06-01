@@ -1,2 +1,1 @@
-# notes
-Notes from books and such
+A collection of notes from learning materials I'm using.
