@@ -43,4 +43,18 @@ JS - see above.
 TS typechecks at compile time. It statically analyzes your code for errors.
 
 ## Setup
+npm install --save-dev typescript tslint @types/node
 
+Every TS proj should have a tsconfig.json in the root directory. It defines which files should be compiled, which directory to compile to, which version of JS to emit
+* *include* -> which folders TSC look in for TS files
+* *lib* -> which APIs TSC assume exist in the env you'll be running your code in
+* *module* -> which module system should TSC compile your code to (CommonJS, SystemJS, ES2015)
+* *outDir* -> which folder should TSC put your generated JS in
+* *strict* -> be as strict as possible when checking for invalid code.
+* *target* -> which JS version should TSC compile your code to (ES3, ES5, ES2015, ES2016)
+
+### TS Lint Setup
+Linters enforce a specific coding style.
+
+compile -> ./node_modules/.bin/tsc
+run -> node ./dist/index.js
