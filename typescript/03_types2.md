@@ -65,3 +65,86 @@ let list: [number, boolean, ...string[]] = [1, false, 'a', 'b', 'c']
 ```
 
 ## null, undefined, void, and never
+*undefined* means that something hasn't been defined yet.
+*null* means an absence of a value.
+*void* is the return type of a function that doesn't explicitly return anything.
+*never* is the type of a function that never returns at all.
+```js
+// null example
+function a(x: number) {
+    if (x < 10) {
+        return x
+    }
+    else {
+        return null
+    }
+}
+
+// undefined example
+function b() {
+    return undefined
+}
+
+// void example
+function c() {
+    let a = 2 + 2
+    let b = a * a
+}
+
+// never example
+function d() {
+    throw TypeError('I error')
+}
+
+// another never
+function e() {
+    while (true) {
+        doSomething()
+    }
+}
+```
+
+## Enums
+Enums are a way to enumerate the possible values for a type. They're unordered data structures that map keys to values.
+Two kinds: enums that map from strings to strings, and enums that map from strings to numbers. By convention, enum names are uppercase and singular. Their keys are also uppercase.
+```js
+enum Language {
+    English,
+    Spanish,
+    Russian
+}
+
+// to retrieve a value
+let myFirstLang = Language.Russian;
+let mySecondLang = Language['English'];
+
+// can split across multiple declarations
+enum Language {
+    English = 0,
+    Spanish = 1,
+}
+enum Language {
+    Russian = 2
+}
+
+// can use computed values, don't have to define all
+enum Language {
+    English = 100,
+    Spanish = 200 + 300,
+    Russian, // TS infers 501
+}
+
+// can use access enums by value and key
+let a = Language.English // number
+let c = Color[0] // language string
+
+// we can prevent unsafe access w/ const on an enum
+const enum Language {
+    English,
+    Spanish,
+    Russian
+}
+
+let a = Language.English // language
+let b = Language.Tagalog // error - tagalog doesn't exist
+let c = Language[0] // error - can only access w/ string literal
